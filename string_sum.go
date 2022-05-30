@@ -31,7 +31,7 @@ func StringSum(input string) (output string, err error) {
 	var prefix string
 
 	if len(noSpaceString) == 0 {
-		return "", fmt.Errorf("Empty error: %w", errorEmptyInput)
+		return "", fmt.Errorf("mpty error: %w", errorEmptyInput)
 	}
 	// trimming first symbol
 	if string(noSpaceString[0]) == "+" {
@@ -49,7 +49,7 @@ func StringSum(input string) (output string, err error) {
 		numbers = append(numbers, strings.Split(indexOfArray, "-")...)
 	}
 	// generating errors
-	if len(numbers) > 2 {
+	if len(numbers) > 2 || len(numbers) < 2 {
 		return "", fmt.Errorf("More variables: %w", errorNotTwoOperands)
 	}
 
