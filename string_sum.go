@@ -31,7 +31,7 @@ func StringSum(input string) (output string, err error) {
 	var prefix string
 
 	if len(noSpaceString) == 0 {
-		return "", errorEmptyInput
+		return "", fmt.Errorf("Empty error: %w", errorEmptyInput)
 	}
 	// trimming first symbol
 	if string(noSpaceString[0]) == "+" {
@@ -50,7 +50,7 @@ func StringSum(input string) (output string, err error) {
 	}
 	// generating errors
 	if len(numbers) > 2 {
-		return "", errorNotTwoOperands
+		return "", fmt.Errorf("More variables: %w", errorNotTwoOperands)
 	}
 
 	// parsing expression
@@ -62,9 +62,9 @@ func StringSum(input string) (output string, err error) {
 
 	// generating errors for incorrect characters in numbers
 	if err1 != nil {
-		return "", fmt.Errorf("letter in first number: ", err1)
+		return "", fmt.Errorf("letter in first number: %w ", err1)
 	} else if err2 != nil {
-		return "", fmt.Errorf("letter in second number: ", err2)
+		return "", fmt.Errorf("letter in second number: %w", err2)
 	}
 
 	// calculate expression
